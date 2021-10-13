@@ -1,10 +1,6 @@
 <h1><%= @chatroom.name.capitalize %></h1>
 <div class="messages">
-  <% if @chatroom.messages.any? %>
-    <% @chatroom.messages.each do |message| %>
-      <%= message.content %>
-    <% end %>
-  <% else %>
-    <p>No message yet</p>
+  <% @chatroom.messages.each do |message| %>
+    <%= message.content %>
   <% end %>
 </div>
