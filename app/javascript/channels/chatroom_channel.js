@@ -3,14 +3,14 @@ import consumer from "./consumer"
 const initChatroomCable = () => {
   const messagesContainer = document.getElementById('messages');
   if (messagesContainer) {
-    const name = messagesContainer.dataset.chatroomName;
-
-    consumer.subscriptions.create({ channel: "ChatroomChannel", id: name }, {
+    const id = messagesContainer.dataset.chatroomName;
+    consumer.subscriptions.create({ channel: "ChatroomChannel", name: id }, {
       received(data) {
+        console.log(data);
         messagesContainer.insertAdjacentHTML('beforeend', data);
       },
     });
   }
 }
 
-export { initChatroomCable };
+export { initChatroomCable }
