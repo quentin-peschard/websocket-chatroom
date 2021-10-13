@@ -1,6 +1,9 @@
 class ChatroomChannel < ApplicationCable::Channel
   def subscribed
-    chatroom = Chatroom.find(params[:name])
-    stream_for chatroom
+    stream_from "chat_#{params[:name]}"
+  end
+
+  def receive(data)
+    ActionCable.server.broadcast("chat_#{params[:name]}", data)
   end
 end
