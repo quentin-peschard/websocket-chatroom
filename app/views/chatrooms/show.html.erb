@@ -1,13 +1,16 @@
-<h1><%= @chatroom.name.capitalize %></h1>
-<div class="messages">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message">
-      <%= message.content %>
-    </div>
-  <% end %>
-</div>
-<div class="new-message">
-  <%= simple_form_for [ @chatroom, Message.new ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
-  <% end %>
+<div class="container">
+  <h1><%= @chatroom.name.capitalize %></h1>
+  <div class="messages">
+    <% @chatroom.messages.each do |message| %>
+      <div class="message">
+        <%= message.content %>
+      </div>
+    <% end %>
+  </div>
+  <div class="new-message">
+    <h3>New message</h3>
+    <%= simple_form_for [ @chatroom, Message.new ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "I love coding" %>
+    <% end %>
+  </div>
 </div>
