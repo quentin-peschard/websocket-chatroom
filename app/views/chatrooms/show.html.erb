@@ -2,9 +2,7 @@
   <h1><%= @chatroom.name.capitalize %></h1>
   <div id="messages" data-chatroom-id="<%= @chatroom.chat_id %>">
     <% @chatroom.messages.each do |message| %>
-      <div class="message-box" id="message-<%= message.id %>">
-        <span class="message-content"><%= message.content %></span>
-      </div>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
   <div id="new-message">
