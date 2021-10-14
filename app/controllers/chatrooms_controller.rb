@@ -2,12 +2,11 @@ class ChatroomsController < ApplicationController
   def show
     if Chatroom.where(name: params[:name]).any?
       @chatroom = Chatroom.find(params[:name])
-      @message = Message.new
     else
       @chatroom = Chatroom.create({ name: params[:name], chat_id: set_id })
-      @message = Message.new
       @chatroom.save
     end
+    @message = Message.new
     @chatroom
   end
 

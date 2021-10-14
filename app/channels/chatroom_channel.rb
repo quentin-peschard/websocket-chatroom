@@ -1,6 +1,6 @@
 class ChatroomChannel < ApplicationCable::Channel
   def subscribed
-    chatroom = Chatroom.find(params[:name]).chat_id
+    chatroom = Chatroom.maximum(:chat_id)
     stream_for chatroom
   end
 end
