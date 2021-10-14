@@ -1,9 +1,9 @@
 <div class="container">
   <h1><%= @chatroom.name.capitalize %></h1>
-  <div id="messages" data-chatroom-name="<%= @chatroom.name %>">
+  <div id="messages" data-chat-room="<%= @chatroom.name %>">
     <% @chatroom.messages.each do |message| %>
       <div class="message-box" id="message-<%= message.id %>">
-        <%= message.content %>
+        <span class="message-content"><%= message.content %></span>
       </div>
     <% end %>
   </div>

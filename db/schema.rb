@@ -15,16 +15,16 @@ ActiveRecord::Schema.define(version: 2021_10_13_134040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "chatrooms", primary_key: "name", id: :string, force: :cascade do |t|
+  create_table "chatrooms", primary_key: "name", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.string "chatroom_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "chatroom_name"
     t.index ["chatroom_name"], name: "index_messages_on_chatroom_name"
   end
 
@@ -34,5 +34,4 @@ ActiveRecord::Schema.define(version: 2021_10_13_134040) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "messages", "chatrooms", column: "chatroom_name", primary_key: "name"
 end
