@@ -1,6 +1,6 @@
 <div class="container">
   <h1><%= @chatroom.name.capitalize %></h1>
-  <div id="messages" data-chat-room="<%= @chatroom.name %>">
+  <div id="messages" data-chatroom-id="<%= @chatroom.chat_id %>">
     <% @chatroom.messages.each do |message| %>
       <div class="message-box" id="message-<%= message.id %>">
         <span class="message-content"><%= message.content %></span>
@@ -9,7 +9,7 @@
   </div>
   <div id="new-message">
     <h3>New message</h3>
-    <%= simple_form_for [ @chatroom, Message.new ], remote: true do |f| %>
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
       <%= f.input :content, label: false, placeholder: "I love coding" %>
     <% end %>
   </div>
