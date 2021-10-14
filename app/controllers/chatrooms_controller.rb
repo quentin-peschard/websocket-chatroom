@@ -5,6 +5,7 @@ class ChatroomsController < ApplicationController
       @message = Message.new
     else
       @chatroom = Chatroom.create({ name: params[:name], chat_id: set_id })
+      @message = Message.new
       @chatroom.save
     end
     @chatroom
