@@ -4,8 +4,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     if @message.save
-      ActionCable.server.broadcast("chat_#{params[:chatroom_name]}", { body: @message.content })
-      # redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
+      redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
     else
       render 'chatrooms/show'
     end
