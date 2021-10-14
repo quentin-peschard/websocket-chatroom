@@ -3,8 +3,9 @@ class ChatroomsController < ApplicationController
     if Chatroom.where(name: params[:name]).any?
       @chatroom = Chatroom.find(params[:name])
     else
-      @chatroom = Chatroom.new(name: params[:name])
+      @chatroom = Chatroom.create(name: params[:name])
       @chatroom.save
     end
+    @chatroom
   end
 end
